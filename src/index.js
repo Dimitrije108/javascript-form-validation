@@ -2,10 +2,12 @@
 import html from './index.html';
 import './style.css';
 import validateEmail from './validateEmail';
+import validateZIPCode from './validateZIPCode';
 import { validatePassword, validateConfirmPassword } from './validatePassword';
 
 document.addEventListener('DOMContentLoaded', () => {
   validateEmail();
+  validateZIPCode();
   validatePassword();
   validateConfirmPassword();
 });
