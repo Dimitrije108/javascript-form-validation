@@ -1,6 +1,7 @@
 export default function validateEmail() {
   const email = document.querySelector('#email');
   const error = document.querySelector('.email-error');
+  let valid = false;
   // Check if email and error exist
   if (!email || !error) return;
   // Display email error message depending on the error present
@@ -16,9 +17,11 @@ export default function validateEmail() {
   // Check if email value is valid
   const checkEmail = () => {
     if (!email.validity.valid) {
-      return emailError();
+      emailError();
+      valid = false;
     }
     error.textContent = '';
+    valid = true;
   };
 
   email.addEventListener('input', () => checkEmail());
@@ -29,4 +32,6 @@ export default function validateEmail() {
       error.textContent = '';
     }
   });
+
+  return valid;
 }

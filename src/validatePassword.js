@@ -2,6 +2,7 @@ export function validatePassword() {
   const password = document.querySelector('#password');
   const error = document.querySelector('.password-error');
   const checkPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
+  let valid = false;
   // Check if password and error exist
   if (!password || !error) return;
 
@@ -9,12 +10,15 @@ export function validatePassword() {
     if (password.validity.valueMissing) {
       password.setCustomValidity('Enter a password.');
       error.textContent = 'Enter a password.';
+      valid = false;
     } else if (!checkPass.test(password.value)) {
       password.setCustomValidity('Enter a valid password.');
       error.textContent = 'Enter a valid password.';
+      valid = false;
     } else {
       password.setCustomValidity('');
       error.textContent = '';
+      valid = true;
     }
   };
   // Display green check mark
@@ -60,12 +64,15 @@ export function validatePassword() {
       error.textContent = '';
     }
   });
+
+  return valid;
 }
 // Validates if the confirm password input matches with the password input
 export function validateConfirmPassword() {
   const confirmPassword = document.querySelector('#confirm-password');
   const password = document.querySelector('#password');
   const error = document.querySelector('.confirm-password-error');
+  let valid = false;
   // Check if passwords and error exist
   if (!confirmPassword || !password || !error) return;
 
@@ -73,12 +80,15 @@ export function validateConfirmPassword() {
     if (confirmPassword.validity.valueMissing) {
       confirmPassword.setCustomValidity('Confirm your password.');
       error.textContent = 'Confirm your password.';
+      valid = false;
     } else if (confirmPassword.value !== password.value) {
       confirmPassword.setCustomValidity('Passwords need to match.');
       error.textContent = 'Passwords need to match.';
+      valid = false;
     } else {
       confirmPassword.setCustomValidity('');
       error.textContent = '';
+      valid = true;
     }
   };
 
@@ -90,4 +100,6 @@ export function validateConfirmPassword() {
       error.textContent = '';
     }
   });
+
+  return valid;
 }

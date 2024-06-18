@@ -2,6 +2,7 @@ export default function validateZIPCode() {
   const zipCode = document.querySelector('#zip');
   const error = document.querySelector('.zip-error');
   let country = document.querySelector('#country');
+  let valid = false;
 
   if (!zipCode || !error) return;
 
@@ -29,12 +30,15 @@ export default function validateZIPCode() {
     if (zipCode.validity.valueMissing) {
       zipCode.setCustomValidity('Enter a ZIP Code.');
       error.textContent = 'Enter a ZIP Code.';
+      valid = false;
     } else if (!selected[0].test(zipCode.value)) {
       zipCode.setCustomValidity(selected[1]);
       error.textContent = selected[1];
+      valid = false;
     } else {
       zipCode.setCustomValidity('');
       error.textContent = '';
+      valid = true;
     }
   };
 
@@ -47,4 +51,6 @@ export default function validateZIPCode() {
       error.textContent = '';
     }
   });
+
+  return valid;
 }
