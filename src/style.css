@@ -1,1 +1,50 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: pink;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 6px;
+  background-color: whitesmoke;
+}
+
+.input {
+  margin: 1rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:focus:invalid {
+  border: 2px solid red;
+}
+
+input[required]:valid {
+  border: 2px solid green;
+}
+
+.error {
+  color: red;
+}
+
+ul {
+  margin: 0;
+}
+
+.validReq {
+  color: green;
+}
