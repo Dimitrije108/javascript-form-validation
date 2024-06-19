@@ -4,8 +4,10 @@ export default function validateEmail() {
   let valid = false;
   // Check if email and error exist
   if (!email || !error) return;
+
+  const getValid = () => valid;
   // Display email error message depending on the error present
-  const emailError = () => {
+  const displayError = () => {
     if (email.validity.valueMissing) {
       error.textContent = 'Enter an email address.';
     } else if (email.validity.typeMismatch) {
@@ -15,17 +17,17 @@ export default function validateEmail() {
     }
   };
   // Check if email value is valid
-  const checkEmail = () => {
+  const checkValidity = () => {
     if (!email.validity.valid) {
-      emailError();
+      displayError();
       valid = false;
     }
     error.textContent = '';
     valid = true;
   };
 
-  email.addEventListener('input', () => checkEmail());
-  email.addEventListener('focus', () => checkEmail());
+  email.addEventListener('input', () => checkValidity());
+  email.addEventListener('focus', () => checkValidity());
 
   email.addEventListener('blur', () => {
     if (email.validity.valueMissing) {
@@ -33,5 +35,5 @@ export default function validateEmail() {
     }
   });
 
-  return valid;
+  return { getValid };
 }

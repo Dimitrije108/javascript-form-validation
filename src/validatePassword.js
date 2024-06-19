@@ -6,6 +6,8 @@ export function validatePassword() {
   // Check if password and error exist
   if (!password || !error) return;
 
+  const getValid = () => valid;
+
   const checkValidity = () => {
     if (password.validity.valueMissing) {
       password.setCustomValidity('Enter a password.');
@@ -65,7 +67,7 @@ export function validatePassword() {
     }
   });
 
-  return valid;
+  return { getValid };
 }
 // Validates if the confirm password input matches with the password input
 export function validateConfirmPassword() {
@@ -75,6 +77,8 @@ export function validateConfirmPassword() {
   let valid = false;
   // Check if passwords and error exist
   if (!confirmPassword || !password || !error) return;
+
+  const getValid = () => valid;
 
   const checkValidity = () => {
     if (confirmPassword.validity.valueMissing) {
@@ -101,5 +105,5 @@ export function validateConfirmPassword() {
     }
   });
 
-  return valid;
+  return { getValid };
 }

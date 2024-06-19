@@ -4,10 +4,12 @@ import './style.css';
 import validateEmail from './validateEmail';
 import validateZIPCode from './validateZIPCode';
 import { validatePassword, validateConfirmPassword } from './validatePassword';
+import validateForm from './validateForm';
 
 document.addEventListener('DOMContentLoaded', () => {
   validateEmail();
   validateZIPCode();
   validatePassword();
   validateConfirmPassword();
+  validateForm();
 });

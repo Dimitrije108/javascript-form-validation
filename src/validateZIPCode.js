@@ -6,6 +6,8 @@ export default function validateZIPCode() {
 
   if (!zipCode || !error) return;
 
+  const getValid = () => valid;
+
   const countryZipCodes = {
     serbia: [
       /^\d{5}$/,
@@ -52,5 +54,5 @@ export default function validateZIPCode() {
     }
   });
 
-  return valid;
+  return { getValid };
 }
